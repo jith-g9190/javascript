@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous">
+  
+    </script>
+
+    <style>
+        body {
+            background: rgb(189, 124, 27);
+            background-image: url("https://cdn.britannica.com/s:800x450,c:crop/23/204523-138-A67F2633/more-weather-climate.jpg");
+            background-size: cover;
+            text-decoration-color: white;
+            
+
+
+
+
+        }
+
+        .row {
+            margin-top: 10px;
+        }
+        #place{
+            background-color: rgb(224, 230, 173);
+            text-align: center;
+            
+        }
+        h5{
+            font-family: 'Crimson Text', serif;
+
+        }
+        .list-group{
+            font-family: 'Crimson Text', serif;
+            
+        }
+       
+    </style>
+
+</head>
+
+<body>
+    <div class="container ">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4 ">
+                <input type="text" id="place" class="form-control ">
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4"> <button class="btn btn-warning " onclick="diplayValue() ">Submit</button></div>
+                    <div class="col-4"></div>
+                </div>
+            </div>
+            <div class="col-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4" id="nam" ></div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+
+</body>
+<script>
+    // function fetchWeather() {
+    //     let p_name = place.value;
+    //     let url = `http://api.openweathermap.org/data/2.5/weather?q=${p_name}&units=metric&appid=8998b811aa638647d015cc5ac9d45770`
+    //     fetch(url).then(res => res.json()).then(data =>{
+    //         nam.innerHTML = data.name;
+    //         tempe.innerHTML=data.main.temp;
+    //         sp.innerHTML=data.wind.speed;
+
+
+    //     })
+    // }
+
+    function diplayValue() {
+        let p_name = place.value;
+        let url = `http://api.openweathermap.org/data/2.5/weather?q=${p_name}&units=metric&appid=8998b811aa638647d015cc5ac9d45770`
+        fetch(url).then(res => res.json()).then(data => {
+            let city_name = data.name;
+            let temp1 = data.main.temp;
+            let tempmin = data.main.temp_min;
+            let tempmax = data.main.temp_max;
+            let hum = data.main.humidity;
+            let sp = data.wind.speed;
+            // console.log(sym);
+
+            let html_data = ` <div class="card" >
+      <img src="https://freefrontend.com/assets/img/css-weather-icons/css-animated-weather-icons.gif" class="card-img-top" alt="..." style=width:100%;>
+      <div class="card-body">
+        <h5 class="card-title fas fa-1x fa-city" style=width:20rem;> CityName-${city_name}</h5>
+        <p class="card-text"></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item fas fa-1x fa-thermometer-half"> Temperature-${temp1}</li>
+        <li class="list-group-item fas fa-1x fa-thermometer-half"> Minimum temperature-${tempmin}</li>
+        <li class="list-group-item fas fa-1x fa-thermometer-half" >Maximum temperature-${tempmax}</li>
+        <li class="list-group-item fas fa-1x fa-tint"> Humidity-${hum}</li>
+        <li class="list-group-item fas  fa-1x fa-wind"> Wind speed-${sp}</li>
+      </ul>
+      
+    <div/>`
+            nam.innerHTML = html_data;
+
+        })
+    }
+</script>
+
+</html>

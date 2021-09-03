@@ -1,0 +1,46 @@
+create database <database_name>;
+
+use <database_name>;
+
+show tables;
+
+create table  <table_name> (field field_type,,,,);
+
+desc <table_name>;
+
+insert into <table_name> (field1, field2,,,,) values(value1, value2,,,);
+
+select * from <table_name>;
+
+select field1,field2 from <table_name> where {condition};
+
+update <table_name> set field=value where {condition};
+
+delete from <table_name> where {condition};
+
+select count(field) from <table_name> where {condition};
+
+select max(field) from <table_name>;
+
+select sum(field) from <table_name>;
+
+select avg(field) from <table_name>;
+
+second largest
+select max(field) from <table_name> where field=(select max(field) from <table_name>);
+
+
+
+
+cerate a table
+movies
+
+movie_id 	movie_name   release_year   rating   
+
+
+highest rating
+highest rating movie name
+second highest rating
+second highest rating movie name
+no;of movie realse in each year -- group by year
+year in which no of movies release is higest

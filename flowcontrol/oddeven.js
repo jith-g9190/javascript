@@ -9,6 +9,7 @@ else{
     console.log("number is odd");
 }
 
-
+// var num=12;
+// console.log(num%2==0?"num is even":"num is odd");
 
 
